@@ -299,12 +299,12 @@
        
         <div id="TreeMenu">
         <div v-for="(node, index) in nodes" :class="{'TreeMenu-row-border-bottom': !depth}">
-            <div class="TreeMenu-row">
-            <img class="TreeMenu-row-selectimg" src="./ic_ok.png" @click="selectNode(0,node)" v-show="node.IsSelected"/>
-            <img class="TreeMenu-row-selectimg" src="./ic_circle.png" @click="selectNode(1,node)" v-show="!node.IsSelected"/>
+            <div class="TreeMenu-row">     
             <div class="TreeMenu-row-firstdiv" :class="{'TreeMenu-row-border-bottom': node.ChildTypeList&&node.IsExpanded }"  @click="expandNode(!node.IsExpanded,node)">
             <img class="TreeMenu-row-arrowimg" src="./minus-square.png" v-if="node.ChildTypeList" v-show="!node.IsExpanded">
             <img class="TreeMenu-row-arrowimg" src="./plus-square.png" v-if="node.ChildTypeList" v-show="node.IsExpanded">
+           <img class="TreeMenu-row-selectimg" src="./ic_ok.png" @click="selectNode(0,node)" v-show="node.IsSelected"/>
+            <img class="TreeMenu-row-selectimg" src="./ic_circle.png" @click="selectNode(1,node)" v-show="!node.IsSelected"/>
             <label v-text="node.Name"></label>
                
             </div>
