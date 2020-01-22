@@ -1,0 +1,27 @@
+  #TreeMenu {
+    .TreeMenu-row{
+      margin-left: 30px;
+      font-size: 15px;
+      padding: 12px 0 0 0;
+    }
+    .TreeMenu-row-firstdiv{
+      height: 32px;
+      margin-left: 30px;
+    }
+    .TreeMenu-row-arrowimg{
+      float: right;
+      margin-right: 15px;
+      width: 13px;
+    }
+    .TreeMenu-row-selectimg{
+      float: left;
+      width: 18px;
+      vertical-align: text-bottom;
+    }
+    .TreeMenu-row-border-bottom{
+      border-bottom: solid 1px #e6e6e6;
+    }
+    .TreeMenu-row-border-top{
+      border-top: solid 1px #e6e6e6;
+    }
+  }

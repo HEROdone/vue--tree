@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <link rel="stylesheet" href="index1.css">
+<title>tree</title>  
+</head>
+<body>
+<div id="app">
+      <vue-tree :nodes="nodes"></vue-tree>
+</div>
+<script>
+  //  goodstype: {
+  //         ID: '',
+  //         ParentID: '',
+  //         Name: '',
+  //         Code: '',
+  //         Level: 0,
+  //         ImgUrl:null,
+  //         IsSelected:false,
+  //         IsExpanded:false,
+  //         ChildTypeList: []
+  //       }
+    var nodes =  [
+         {
+          ID: '1',                //一级
+          ParentID: '',
+          Name: '一级',
+          Code: '',
+          Level: 0,
+          ImgUrl:null,
+          IsSelected:false,
+          IsExpanded:false,
+          ChildTypeList: [           //二级
+          {
+          ID: '1-1',
+          ParentID: '1',
+          Name: '二级',
+          Code: '',
+          Level: 1,
+          ImgUrl:null,
+          IsSelected:false,
+          IsExpanded:false,
+          ChildTypeList: []          
+         },
+         {
+          ID: '1-2',              //二级
+          ParentID: '1',
+          Name: '二级',
+          Code: '',
+          Level: 1,
+          ImgUrl:null,
+          IsSelected:false,
+          IsExpanded:false,
+          ChildTypeList: [
+          {
+          ID: '1-2-1',          // 三级
+          ParentID: '1-2',
+          Name: '三级',
+          Code: '',
+          Level: 2,
+          ImgUrl:null,
+          IsSelected:false,
+          IsExpanded:false,
+          ChildTypeList: []
+         },
+         {
+          ID: '1-2-1-1',        //三级
+          ParentID: '1-2-1',
+          Name: '三级',
+          Code: '',
+          Level: 2,
+          ImgUrl:null,
+          IsSelected:false,
+          IsExpanded:false,
+          ChildTypeList: [
+          {
+          ID: '1-2-1-1-1',        //三级
+          ParentID: '1-2-1-1',
+          Name: '四级',
+          Code: '',
+          Level: 3,
+          ImgUrl:null,
+          IsSelected:false,
+          IsExpanded:false,
+          ChildTypeList: []
+         }
+          ]
+         }
+          ]
+         }
+          ]       
+         },
+         {
+          ID: '2',             //一级
+          ParentID: '',
+          Name: '一级',
+          Code: '',
+          Level: 0,
+          ImgUrl:null,
+          IsSelected:false,
+          IsExpanded:false,
+          ChildTypeList: [
+          {
+          ID: '2-1',
+          ParentID: '2',
+          Name: '二级',
+          Code: '',
+          Level: 0,
+          ImgUrl:null,
+          IsSelected:false,
+          IsExpanded:false,
+          ChildTypeList: []
+         },
+         {
+          ID: '2-2',
+          ParentID: '2',
+          Name: '二级',
+          Code: '',
+          Level: 1,
+          ImgUrl:null,
+          IsSelected:false,
+          IsExpanded:false,
+          ChildTypeList: [
+          {
+          ID: '2-2-1',
+          ParentID: '2-2',
+          Name: '三级',
+          Code: '',
+          Level: 2,
+          ImgUrl:null,
+          IsSelected:false,
+          IsExpanded:false,
+          ChildTypeList: []
+         },
+         {
+          ID: '2-2-2',
+          ParentID: '2-2',
+          Name: '三级',
+          Code: '',
+          Level: 2,
+          ImgUrl:null,
+          IsSelected:false,
+          IsExpanded:false,
+          ChildTypeList: []
+         }
+          ]
+         }
+          ]
+         },
+         {
+          ID: '3',            //一级
+          ParentID: '',
+          Name: '一级',
+          Code: '',
+          Level: 0,
+          ImgUrl:null,
+          IsSelected:false,
+          IsExpanded:false,
+          ChildTypeList: [
+          {
+          ID: '3-1',
+          ParentID: '3',
+          Name: '二级',
+          Code: '',
+          Level: 1,
+          ImgUrl:null,
+          IsSelected:false,
+          IsExpanded:false,
+          ChildTypeList: [
+          {
+          ID: '3-1-1',
+          ParentID: '3-1',
+          Name: '三级',
+          Code: '',
+          Level: 2,
+          ImgUrl:null,
+          IsSelected:false,
+          IsExpanded:false,
+          ChildTypeList: []
+         },
+         {
+          ID: '3-1-2',
+          ParentID: '3-1',
+          Name: '三级',
+          Code: '',
+          Level: 2,
+          ImgUrl:null,
+          IsSelected:false,
+          IsExpanded:false,
+          ChildTypeList: []
+         }
+          ]
+         },
+         {
+          ID: '1',
+          ParentID: '',
+          Name: '二级',
+          Code: '',
+          Level: 0,
+          ImgUrl:null,
+          IsSelected:false,
+          IsExpanded:false,
+          ChildTypeList: []
+         }
+          ]
+         }
+    ];
+   //父组件
+   
+    //子组件
+    Vue.component("tree-menu",{
+        name: 'treeMenu',
+    data () {
+      return {
+        goodstype: {
+          ID: '',
+          ParentID: '',
+          Name: '',
+          Code: '',
+          Level: 0,
+          ImgUrl:null,
+          IsSelected:false,
+          IsExpanded:false,
+          ChildTypeList: []
+        }
+      }
+    },
+    props: {
+      nodes: {
+        type: Array,
+        default: () => {
+          return []
+        }
+      },
+      fatherIndex: {
+        type: Number,
+        default: 0
+      },
+      depth: {
+        type: Number,
+        default: 0
+      }
+    },
+    watch: {},
+    created () {},
+    mounted () {},
+    destroyed () {},
+    methods: {
+      // 选中/取消 当前节点
+      selectNode (choice, node) {
+        alert("选中/取消 当前节点");
+        node.IsSelected = choice
+        this.selectChildrenNode(choice, node.ChildTypeList || [])
+        this.$emit('selectFatherNode', choice, this.fatherIndex, this.nodes.every((node) => { return node.IsSelected === choice }))
+      },
+      // 子节点修改选中状态
+      selectChildrenNode (choice, nodes, self) {
+        alert("子节点修改选中状态");
+        let itself = self || this
+        nodes.forEach((node) => { node.IsSelected = choice; itself.selectChildrenNode(choice, node.ChildTypeList || [], itself) })
+      },
+      // 作为父级节点检查是否需要修改选中状态(仅用于子节点调用) 
+      selectFatherNode (choice, index, childrenState) {
+        alert("作为父级节点检查是否需要修改选中状态(仅用于子节点调用) ");
+        if (choice) {
+          // 若其[Index]节点下子节点均为被选中状态，该[Index]节点就应该被选中
+          if (childrenState) {
+            this.nodes[index].IsSelected = choice
+            this.$emit('selectFatherNode', choice, this.fatherIndex, this.nodes.every((node) => { return node.IsSelected === choice }))
+          }
+        } else {
+          // 若其[Index]节点下子节点有未被选中状态的，该[Index]节点就应该未选中
+          this.nodes[index].IsSelected = choice
+          this.$emit('selectFatherNode', choice, this.fatherIndex, false)
+        }
+      },
+      // 展开/收起 当前节点
+      expandNode (choice, node) {
+        alert("展开/收起 当前节点");
+        console.log(Node);
+        node.IsExpanded = choice
+        if (!choice) {
+          this.expandChildrenNode(choice, node.ChildTypeList)
+        }
+      },
+      // 子节点收起
+      expandChildrenNode (choice, nodes, self) {
+        alert("子节点收起");
+        let itself = self || this
+        nodes.forEach((node) => { node.IsExpanded = choice; itself.expandChildrenNode(choice, node.ChildTypeList || [], itself) })
+      }
+    },
+        template:`
+       
+        <div id="TreeMenu">
+        <div v-for="(node, index) in nodes" :class="{'TreeMenu-row-border-bottom': !depth}">
+            <div class="TreeMenu-row">
+            <img class="TreeMenu-row-selectimg" src="./ic_ok.png" @click="selectNode(0,node)" v-show="node.IsSelected"/>
+            <img class="TreeMenu-row-selectimg" src="./ic_circle.png" @click="selectNode(1,node)" v-show="!node.IsSelected"/>
+            <div class="TreeMenu-row-firstdiv" :class="{'TreeMenu-row-border-bottom': node.ChildTypeList&&node.IsExpanded }"  @click="expandNode(!node.IsExpanded,node)">
+            <img class="TreeMenu-row-arrowimg" src="./minus-square.png" v-if="node.ChildTypeList" v-show="!node.IsExpanded">
+            <img class="TreeMenu-row-arrowimg" src="./plus-square.png" v-if="node.ChildTypeList" v-show="node.IsExpanded">
+            <label v-text="node.Name"></label>
+               
+            </div>
+            <treeMenu :nodes="node.ChildTypeList" :fatherIndex="index" :depth="depth+1" v-on:selectFatherNode="selectFatherNode" v-if="node.ChildTypeList" v-show="!node.IsExpanded"></treeMenu>
+            </div>
+        </div>
+        </div>
+
+        `
+    })
+    //父组件
+    Vue.component("vue-tree",{
+       data(){
+           return{
+               fatherIndex:0,
+               depth:0
+           }
+       },
+       props:{
+           nodes: Array
+       },
+        template:`
+    <div>
+        <tree-menu :nodes="nodes"> </tree-menu>
+    </div>
+        `
+    })
+       
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            nodes:nodes
+        }
+    });
+</script>
+</body>
+ 
+</html>
