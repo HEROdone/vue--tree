@@ -166,20 +166,20 @@
     methods: {
       // 选中/取消 当前节点
       selectNode (choice, node) {
-        alert("选中/取消 当前节点");
+        console.log("选中/取消 当前节点");
         node.IsSelected = choice
         this.selectChildrenNode(choice, node.ChildTypeList || [])
         this.$emit('selectFatherNode', choice, this.fatherIndex, this.nodes.every((node) => { return node.IsSelected === choice }))
       },
       // 子节点修改选中状态
       selectChildrenNode (choice, nodes, self) {
-        alert("子节点修改选中状态");
+        console.log("子节点修改选中状态");
         let itself = self || this
         nodes.forEach((node) => { node.IsSelected = choice; itself.selectChildrenNode(choice, node.ChildTypeList || [], itself) })
       },
       // 作为父级节点检查是否需要修改选中状态(仅用于子节点调用) 
       selectFatherNode (choice, index, childrenState) {
-        alert("作为父级节点检查是否需要修改选中状态(仅用于子节点调用) ");
+        console.log("作为父级节点检查是否需要修改选中状态(仅用于子节点调用) ");
         if (choice) {
           // 若其[Index]节点下子节点均为被选中状态，该[Index]节点就应该被选中
           if (childrenState) {
@@ -194,8 +194,7 @@
       },
       // 展开/收起 当前节点
       expandNode (choice, node) {
-        alert("展开/收起 当前节点");
-        console.log(Node);
+        console.log("展开/收起 当前节点");
         node.IsExpanded = choice
         if (!choice) {
           this.expandChildrenNode(choice, node.ChildTypeList)
@@ -203,7 +202,7 @@
       },
       // 子节点收起
       expandChildrenNode (choice, nodes, self) {
-        alert("子节点收起");
+       console.log("子节点收起");
         let itself = self || this
         nodes.forEach((node) => { node.IsExpanded = choice; itself.expandChildrenNode(choice, node.ChildTypeList || [], itself) })
       }
