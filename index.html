@@ -15,76 +15,43 @@
 </div>
 <script>
   //  goodstype: {
-  //         ID: '',
-  //         ParentID: '',
   //         Name: '',
-  //         Code: '',
-  //         Level: 0,
-  //         ImgUrl:null,
   //         IsSelected:false,
   //         IsExpanded:false,
   //         ChildTypeList: []
   //       }
     var nodes =  [
-         {
-          ID: '1',                //一级
-          ParentID: '',
+         {                      //一级
           Name: '一级',
-          Code: '',
-          Level: 0,
-          ImgUrl:null,
           IsSelected:false,
           IsExpanded:false,
           ChildTypeList: [           //二级
           {
-          ID: '1-1',
-          ParentID: '1',
           Name: '二级',
-          Code: '',
-          Level: 1,
-          ImgUrl:null,
           IsSelected:false,
           IsExpanded:false,
           ChildTypeList: []          
          },
-         {
-          ID: '1-2',              //二级
-          ParentID: '1',
+         {                   //二级
           Name: '二级',
-          Code: '',
-          Level: 1,
-          ImgUrl:null,
           IsSelected:false,
           IsExpanded:false,
           ChildTypeList: [
-          {
-          ID: '1-2-1',          // 三级
-          ParentID: '1-2',
+          {         // 三级
+      
           Name: '三级',
-          Code: '',
-          Level: 2,
-          ImgUrl:null,
           IsSelected:false,
           IsExpanded:false,
           ChildTypeList: []
          },
-         {
-          ID: '1-2-1-1',        //三级
-          ParentID: '1-2-1',
+         {                //三级
+        
           Name: '三级',
-          Code: '',
-          Level: 2,
-          ImgUrl:null,
           IsSelected:false,
           IsExpanded:false,
           ChildTypeList: [
-          {
-          ID: '1-2-1-1-1',        //三级
-          ParentID: '1-2-1-1',
+          {    //三级
           Name: '四级',
-          Code: '',
-          Level: 3,
-          ImgUrl:null,
           IsSelected:false,
           IsExpanded:false,
           ChildTypeList: []
@@ -95,55 +62,31 @@
          }
           ]       
          },
-         {
-          ID: '2',             //一级
-          ParentID: '',
+         {        //一级
           Name: '一级',
-          Code: '',
-          Level: 0,
-          ImgUrl:null,
           IsSelected:false,
           IsExpanded:false,
           ChildTypeList: [
           {
-          ID: '2-1',
-          ParentID: '2',
           Name: '二级',
-          Code: '',
-          Level: 0,
-          ImgUrl:null,
           IsSelected:false,
           IsExpanded:false,
           ChildTypeList: []
          },
          {
-          ID: '2-2',
-          ParentID: '2',
           Name: '二级',
-          Code: '',
-          Level: 1,
-          ImgUrl:null,
           IsSelected:false,
           IsExpanded:false,
           ChildTypeList: [
           {
-          ID: '2-2-1',
-          ParentID: '2-2',
+    
           Name: '三级',
-          Code: '',
-          Level: 2,
-          ImgUrl:null,
           IsSelected:false,
           IsExpanded:false,
           ChildTypeList: []
          },
          {
-          ID: '2-2-2',
-          ParentID: '2-2',
           Name: '三级',
-          Code: '',
-          Level: 2,
-          ImgUrl:null,
           IsSelected:false,
           IsExpanded:false,
           ChildTypeList: []
@@ -152,44 +95,24 @@
          }
           ]
          },
-         {
-          ID: '3',            //一级
-          ParentID: '',
+         {              //一级
           Name: '一级',
-          Code: '',
-          Level: 0,
-          ImgUrl:null,
           IsSelected:false,
           IsExpanded:false,
           ChildTypeList: [
           {
-          ID: '3-1',
-          ParentID: '3',
           Name: '二级',
-          Code: '',
-          Level: 1,
-          ImgUrl:null,
           IsSelected:false,
           IsExpanded:false,
           ChildTypeList: [
           {
-          ID: '3-1-1',
-          ParentID: '3-1',
           Name: '三级',
-          Code: '',
-          Level: 2,
-          ImgUrl:null,
           IsSelected:false,
           IsExpanded:false,
           ChildTypeList: []
          },
          {
-          ID: '3-1-2',
-          ParentID: '3-1',
           Name: '三级',
-          Code: '',
-          Level: 2,
-          ImgUrl:null,
           IsSelected:false,
           IsExpanded:false,
           ChildTypeList: []
@@ -197,12 +120,7 @@
           ]
          },
          {
-          ID: '1',
-          ParentID: '',
           Name: '二级',
-          Code: '',
-          Level: 0,
-          ImgUrl:null,
           IsSelected:false,
           IsExpanded:false,
           ChildTypeList: []
@@ -218,12 +136,7 @@
     data () {
       return {
         goodstype: {
-          ID: '',
-          ParentID: '',
           Name: '',
-          Code: '',
-          Level: 0,
-          ImgUrl:null,
           IsSelected:false,
           IsExpanded:false,
           ChildTypeList: []
@@ -246,6 +159,10 @@
         default: 0
       }
     },
+    watch: {},
+    created () {},
+    mounted () {},
+    destroyed () {},
     methods: {
       // 选中/取消 当前节点
       selectNode (choice, node) {
@@ -295,11 +212,12 @@
        
         <div id="TreeMenu">
         <div v-for="(node, index) in nodes" :class="{'TreeMenu-row-border-bottom': !depth}">
-            <div class="TreeMenu-row">     
+            <div class="TreeMenu-row">
+            
             <div class="TreeMenu-row-firstdiv" :class="{'TreeMenu-row-border-bottom': node.ChildTypeList&&node.IsExpanded }"  @click="expandNode(!node.IsExpanded,node)">
             <img class="TreeMenu-row-arrowimg" src="./minus-square.png" v-if="node.ChildTypeList" v-show="!node.IsExpanded">
             <img class="TreeMenu-row-arrowimg" src="./plus-square.png" v-if="node.ChildTypeList" v-show="node.IsExpanded">
-           <img class="TreeMenu-row-selectimg" src="./ic_ok.png" @click="selectNode(0,node)" v-show="node.IsSelected"/>
+            <img class="TreeMenu-row-selectimg" src="./ic_ok.png" @click="selectNode(0,node)" v-show="node.IsSelected"/>
             <img class="TreeMenu-row-selectimg" src="./ic_circle.png" @click="selectNode(1,node)" v-show="!node.IsSelected"/>
             <label v-text="node.Name"></label>
                
